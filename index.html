@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eLibrary</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+    </style>
+</head>
+<body>
+    <main>
+        <h1>My eLibrary</h1>
+        <div class="des">A website helps keeping track of your favourite books!</div>
+        <div id="books-container">
+
+        </div>
+        <button type="button" id="add-new-book-btn">Add New Book</button>
+        <dialog id="add-new-book-modal">
+            <form>
+                <label for="title-input">Title</label>
+                <input type="text" id="title-input">
+                <label for="author-input">Name of author(s)</label>
+                <input type="text" id="author-input">
+                <label for="pages-input">Number of pages</label>
+                <input type="number" id="pages-input">
+                <label for="description-input">Description</label>
+                <textarea id="description-input" cols="30" rows="5"></textarea>
+                <label for="has-read-input">Has you read this book yet?</label>
+                <input type="checkbox" id="has-read-input" value="true">
+                <button type="submit" id="add-book-btn">Add</button>
+                <button id="close-form-btn">Close</button>
+            </form>
+        </dialog>
+    </main>
+</body>
+<script src="script.js"></script>
+</html>
