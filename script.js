@@ -20,27 +20,34 @@ function Book(title, author, pages, description,hasRead){
 const myLibrary = [];
 
 function addBookToLibrary() {
-    const hasRead = hasReadInput.checked;
-    const newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, descriptionInput.value, hasRead);
+    const newBook = new Book(
+        titleInput.value.trim(),
+        authorInput.value.trim(),
+        pagesInput.value.trim(),
+        descriptionInput.value.trim(),
+        hasReadInput.checked
+    );
     myLibrary.push(newBook);
     updateBookContainer();
     cleanInputs();
 }
-
+ 
 
 function updateBookContainer(){
-    booksContainer.innerHTML="";
+    const frag = document.createDocumentFragment();
     myLibrary.forEach(({title, author, description, pages,hasRead}) => {
-        (booksContainer.innerHTML +=`
-            <div class="book-card">
-                <p>Title: ${title}</p>
-                <p>Author: ${author}</p>
-                <p>Pages: ${pages}</p>
-                <p>Description: ${description}</p>
-                <p>${hasRead? "Has read" : "Not yet"}</p>
-            </div>
-            `)
+        const card = document.createElement("div");
+        card.classList.add("book-card");
+        card.innerHTML = `
+            <p>Title: ${title}</p>
+            <p>Author: ${author}</p>
+            <p>Pages: ${pages}</p>
+            <p>Description: ${description}</p>
+            <p>${hasRead? "Has read" : "Not yet"}</p>
+        `;
+        frag.appendChild(card);
     });
+    booksContainer.appendChild(frag);
 }
 function cleanInputs(){
     titleInput.value = "";
